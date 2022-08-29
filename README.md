@@ -10,8 +10,8 @@ packages. This can be helpful if you want to create your own custom JUnit
 reports for example. See the package documentation on pkg.go.dev for more
 information:
 
-- [github.com/jstemmer/go-junit-report/v2/parser/gotest]
-- [github.com/jstemmer/go-junit-report/v2/junit]
+- [github.com/kevinxw/go-junit-report/v2/parser/gotest]
+- [github.com/kevinxw/go-junit-report/v2/junit]
 
 ## Install from package (recommended)
 
@@ -23,7 +23,7 @@ page.
 Download and install the latest stable version from source by running:
 
 ```bash
-go install github.com/jstemmer/go-junit-report/v2@latest
+go install github.com/kevinxw/go-junit-report/v2@latest
 ```
 
 ## Usage
@@ -115,10 +115,10 @@ See [CONTRIBUTING.md].
 
 [`go test`]: https://pkg.go.dev/cmd/go#hdr-Test_packages
 [Jenkins]: https://www.jenkins.io/
-[github-actions-badge]: https://github.com/jstemmer/go-junit-report/actions/workflows/main.yml/badge.svg
-[github-actions-link]: https://github.com/jstemmer/go-junit-report/actions
-[github.com/jstemmer/go-junit-report/v2/parser/gotest]: https://pkg.go.dev/github.com/jstemmer/go-junit-report/v2/parser/gotest
-[github.com/jstemmer/go-junit-report/v2/junit]: https://pkg.go.dev/github.com/jstemmer/go-junit-report/v2/junit
-[Releases]: https://github.com/jstemmer/go-junit-report/releases
+[github-actions-badge]: https://github.com/kevinxw/go-junit-report/actions/workflows/main.yml/badge.svg
+[github-actions-link]: https://github.com/kevinxw/go-junit-report/actions
+[github.com/kevinxw/go-junit-report/v2/parser/gotest]: https://pkg.go.dev/github.com/kevinxw/go-junit-report/v2/parser/gotest
+[github.com/kevinxw/go-junit-report/v2/junit]: https://pkg.go.dev/github.com/kevinxw/go-junit-report/v2/junit
+[Releases]: https://github.com/kevinxw/go-junit-report/releases
 [testing]: https://pkg.go.dev/testing
-[CONTRIBUTING.md]: https://github.com/jstemmer/go-junit-report/blob/master/CONTRIBUTING.md
+[CONTRIBUTING.md]: https://github.com/kevinxw/go-junit-report/blob/master/CONTRIBUTING.md
