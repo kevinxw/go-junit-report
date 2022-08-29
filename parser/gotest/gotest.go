@@ -41,7 +41,10 @@ var (
 		`(?:\s+(\[[^\]]+\]))?` +
 		// 6: coverage percentage (optional)
 		// 7: coverage package list (optional)
-		`(?:\s+coverage:\s+(\d+\.\d+)%\sof\sstatements(?:\sin\s(.+))?)?$`)
+		`(?:\s+coverage:\s+(?:\[no\sstatements\]|(\d+\.\d+)%\sof\sstatements(?:\sin\s(.+))?))?` +
+		// 8: [additional status message] (optional)
+		`(?:\s+(\[[^\]]+\]))?` +
+		`$`)
 )
 
 // Option defines options that can be passed to gotest.New.
@@ -199,8 +202,8 @@ func (p *Parser) parseLine(line string) (events []Event) {
 		return p.endTest(line, matches[1], matches[2], matches[3], matches[4])
 	} else if matches := regexStatus.FindStringSubmatch(line); len(matches) == 2 {
 		return p.status(matches[1])
-	} else if matches := regexSummary.FindStringSubmatch(line); len(matches) == 8 {
-		return p.summary(matches[1], matches[2], matches[3], matches[4], matches[5], matches[6], matches[7])
+	} else if matches := regexSummary.FindStringSubmatch(line); len(matches) == 9 {
+		return p.summary(matches[1], matches[2], matches[3], matches[4], matches[5], matches[8], matches[6], matches[7])
 	} else if matches := regexCoverage.FindStringSubmatch(line); len(matches) == 3 {
 		return p.coverage(matches[1], matches[2])
 	} else if matches := regexBenchmark.FindStringSubmatch(line); len(matches) == 2 {
@@ -250,13 +253,13 @@ func (p *Parser) status(result string) []Event {
 	return []Event{{Type: "status", Result: result}}
 }
 
-func (p *Parser) summary(result, name, duration, cached, status, covpct, packages string) []Event {
+func (p *Parser) summary(result, name, duration, cached, status, addnStatus, covpct, packages string) []Event {
 	return []Event{{
 		Type:        "summary",
 		Result:      result,
 		Name:        name,
 		Duration:    parseSeconds(duration),
-		Data:        strings.TrimSpace(cached + " " + status),
+		Data:        strings.TrimSpace(cached + " " + status + " " + addnStatus),
 		CovPct:      parseFloat(covpct),
 		CovPackages: parsePackages(packages),
 	}}

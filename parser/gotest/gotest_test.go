@@ -92,6 +92,10 @@ var parseLineTests = []parseLineTest{
 		[]Event{{Type: "summary", Name: "package/other", Result: "ok", Data: "(cached)"}},
 	},
 	{
+		"ok  	package/name 0.400s  coverage: [no statements]",
+		[]Event{{Type: "summary", Name: "package/name", Result: "ok", Duration: 400 * time.Millisecond}},
+	},
+	{
 		"ok  	package/name 0.400s  coverage: 10.0% of statements",
 		[]Event{{Type: "summary", Name: "package/name", Result: "ok", Duration: 400 * time.Millisecond, CovPct: 10}},
 	},
@@ -110,6 +114,10 @@ var parseLineTests = []parseLineTest{
 	{
 		"ok  	package/name	(cached) [no tests to run]",
 		[]Event{{Type: "summary", Name: "package/name", Result: "ok", Data: "(cached) [no tests to run]"}},
+	},
+	{
+		"ok   package/name 0.042s  coverage: 0.0% of statements [no tests to run]",
+		[]Event{{Type: "summary", Name: "package/name", Result: "ok", Duration: 42 * time.Millisecond, CovPct: 0, Data: "[no tests to run]"}},
 	},
 	{
 		"coverage: 10% of statements",
