@@ -41,7 +41,7 @@ var (
 		`(?:\s+(\[[^\]]+\]))?` +
 		// 6: coverage percentage (optional)
 		// 7: coverage package list (optional)
-		`(?:\s+coverage:\s+(\d+\.\d+)%\sof\sstatements(?:\sin\s(.+))?)?$`)
+		`(?:\s+coverage:\s+(?:\[no\sstatements\]|(\d+\.\d+)%\sof\sstatements(?:\sin\s(.+))?))?$`)
 )
 
 // Option defines options that can be passed to gotest.New.
